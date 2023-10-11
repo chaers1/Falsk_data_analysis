@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>电商数据分析可视化平台</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/base.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/query.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/analysis.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/visualization.css">
+    <script type="text/javascript" src="../static/js/query.js"></script>
+    <script type="text/javascript" src="../static/js/analysis.js"></script>
+</head>
+
+<body>
+    <div class="base-herder-div">
+
+        <header>
+            电商经营数据可视化管理系统
+        </header>
+
+        <div>
+        <form action="{{ url_for('logout') }}" method="POST">
+            <button type="submit" class="base-logout">退出登录</button>
+        </form>
+        </div>
+
+    </div>
+    <div class="base-div-nav">
+        <nav class="base-nav">
+            <ul class="base-nav-ul">
+                <li><a href="{{url_for('base')}}"><img src="../static/image/120.png" alt="首页图标">首页</a></li>
+                <li><a href="{{url_for('query')}}"><img src="../static/image/122.png" alt="首页图标">数据管理</a></li>
+                <li><a href="{{url_for('analysis')}}"><img src="../static/image/123.png" alt="首页图标">数据分析</a></li>
+                <li><a href="{{url_for('visualization')}}"><img src="../static/image/124.png" alt="首页图标">数据可视化</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="base-div-h">
+        <h1>
+            欢迎光临电商数据分析系统，您的线上电商数据可视化利器！
+        </h1>
+        <h2>如果你对可视化没有创意请点击这里<a href="https://public.tableau.com/app/discover" target="_blank">
+            <img src="../static/image/121.png" alt="点击这里"></a></h2>
+    </div>
+    <div>
+        <footer>
+            <small>&copy; 2023 <a target="_blank" href="https://www.w3school.com.cn/index.html">关于我们-前端网站</a></small>
+            <small><a target="_blank" href="https://public.tableau.com/app/discover">联系我们-可视化参考网站</a></small>
+        </footer>
+    </div>
+{% block content %}
+
+{% endblock %}
+</body>
+</html>

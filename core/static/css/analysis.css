@@ -1,0 +1,48 @@
+.analysis-div{
+    display: fiex;
+    flex-direction: column;
+    justify-content: center;
+    height: 20vh;
+    margin-top: -335px;
+    }
+
+.analysis_div_button {
+    position: relative;
+}
+
+.analysis-table-container {
+    position: absolute;
+    top: -74px;
+    left: 1px;
+    z-index: 1;
+    }
+.table-striped {
+    border-collapse: collapse;
+    width: 198%;
+    border: 24px solid #ccc;
+}
+
+.table-striped2{
+    border-collapse: collapse;
+    width: 198%;
+    border: 53px solid #ccc;
+}
+
+.analysis_div_h3 {
+    position: absolute; /* 调整上边距，使其在表格下方 */
+    top:-120px;
+    right: 47%;
+}
+
+.analysis-clost-button {
+    position: absolute;
+    top: -98px; /* 调整按钮距离顶部的位置 */
+    right: 10px; /* 调整按钮距离右侧的位置 */
+}
+
+.analysis-table-containers {
+    position: absolute;
+    top: -74px;
+    left: 1px;
+    z-index: 1;
+}

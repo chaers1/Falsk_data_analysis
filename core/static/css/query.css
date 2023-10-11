@@ -1,0 +1,79 @@
+.query-div-data{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    margin-top: -415px;
+}
+
+.query-div-button1{
+    margin-left: -22%;
+    margin-top: 19%;
+}
+
+/*表格图层内容*/
+.table-container {
+    /* 表格容器样式 */
+    width: 100%;
+    overflow: auto; /* 如果表格太大，启用滚动条 */
+}
+
+.overlay {
+    /* 图层样式 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+    display: none; /* 初始隐藏图层 */
+}
+
+/* 表格滚动设定*/
+.file-list {
+    max-height: 650px; /* 设置滚动容器的最大高度，可以根据需要调整 */
+    overflow: auto; /* 启用滚动条 */
+    position:absolute;
+    top:215px;
+    left:91px;
+    z-index:999;
+}
+/*表格美化css*/
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    border:1px solid #ccc;
+}
+
+/* 设置表头的背景颜色 */
+.table th {
+    background-color: #f0f0f0; /* 表头背景颜色 */
+}
+
+/* 设置表格内容的背景颜色 */
+.table tbody tr:nth-child(odd) {
+    background-color: #f2f2f2; /* 交替行的背景颜色 */
+}
+
+/* 设置表格内容的另一种背景颜色 */
+.table tbody tr:nth-child(even) {
+    background-color: #e0e0e0; /* 交替行的背景颜色 */
+}
+
+
+/* 添加悬停效果 */
+.table-hover tbody tr:hover {
+    background-color: #e0e0e0; /* 悬停行的背景颜色 */
+}
+
+.table th, .table td {
+    border: 1px solid #ccc; /* 添加单元格边框 */
+    padding: 8px;
+    text-align: center;
+}
+.table  thead th{
+    position: sticky;
+    top: 0; /* 表头固定在顶部 */
+    z-index: 1; /* 确保表头位于其他内容之上 */
+}

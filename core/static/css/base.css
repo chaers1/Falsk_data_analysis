@@ -1,0 +1,124 @@
+/* 图片信息传入 */
+body{
+    background-image: url('../image/base.png');
+    background-repeat: no-repeat;
+    backround-size: 450px,300px;
+    background-position: 750px 125px;
+}
+/* 网站头部header中的css设定 */
+
+.base-herder-div {
+    background-color: #6f068bad; /* 背景颜色 */
+    color: #fff; /* 文字颜色 */
+    padding: 10px; /* 内边距 */
+    display: flex; /* 使用 Flexbox 布局 */
+    justify-content: space-between; /* 左右对齐 */
+    align-items: center; /* 垂直居中 */
+}
+
+header {
+    font-size: 30px; /* 标题文字大小 */
+}
+
+.base-logout {
+    background-color: #fff; /* 按钮背景颜色 */
+    color: #007bff; /* 按钮文字颜色 */
+    border: none; /* 移除按钮边框 */
+    padding: 10px 20px; /* 按钮内边距 */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* 添加背景和文字颜色过渡效果 */
+}
+
+.base-logout:hover {
+    background-color: #007bff; /* 鼠标悬停时的背景颜色 */
+    color: #fff; /* 鼠标悬停时的文字颜色 */
+}
+
+
+/* 导航栏css设定 */
+.base-div-nav {
+    background-color:#e0e0e0;
+    display: flex; /* 使用 Flexbox 布局 */
+    margin-left: 0%;
+    width:100%;
+    height: 60px;
+    margin-top:0px;
+}
+
+.base-nav{
+    padding: 0px;
+    margin-left:28%;
+    height:95%;
+    width:42%;
+}
+
+.base-nav-ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* 使用justify-content来水平居中 */
+    position: relative; /* 用于定位伪元素 */
+    padding-left: 30px; /* 为伪元素留出空间 */
+    margin-right: 30px;
+}
+
+.base-nav-ul li {
+    margin-right: 40px; /* 可以根据需要设置间距 */
+    position: relative;
+    margin-right: 30px;
+    padding-left: 30px;
+    cursor: pointer;
+}
+
+.base-nav-ul li:last-child {
+    margin-right: 0;
+}
+
+.base-nav-ul li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: transparent; /* 初始状态下透明 */
+    transition: color 0.3s; /* 添加颜色过渡效果 */
+
+}
+
+.base-nav-ul li:hover::before {
+    color: #007bff; /* 鼠标悬停时的颜色 */
+}
+
+/* 网站底部设定 */
+
+footer {
+    position: fixed; /* 使用固定定位 */
+    bottom: 0; /* 位于页面底部 */
+    left: 0; /* 左侧对齐 */
+    width: 100%; /* 宽度占满整个屏幕 */
+    color: #fff; /* 文字颜色 */
+    padding: 10px; /* 内边距 */
+    text-align: center; /* 文本居中对齐 */
+}
+
+/* h1标签css设定 */
+.base-div-h{
+    width:39%;
+    margin-top:10%;
+    text-align: center;
+}
+
+/* 屏幕适配 */
+.some-element {
+    /* 默认样式 */
+}
+
+/* 在小屏幕上修改样式 */
+@media (max-width: 768px) {
+    .some-element {
+        /* 修改样式以适应小屏幕 */
+    }
+}
+
+

@@ -1,0 +1,252 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="analysis-div">
+    <form action="{{url_for('visualization')}}" method="POST" enctype="multipart/form-data">
+        <div class="analyses-div-2">
+            <h2>选择选择可视化类型：</h2>
+            <label for="vis-analysis_type">可视化类型：</label>
+            <select id="vis-analysis_type" name="analysis_type">
+                <option value="single_day">单日数据可视化</option>
+                <option value="multi_day">多日数据可视化</option>
+            </select>
+
+            <!-- 单日数据分析的日期输入框 -->
+            <div id="vis-single_day_input" style="display: none;">
+                <label for="single_date">选择日期：</label>
+                <input type="date" id="single_date" name="single_date">
+            </div>
+
+            <!-- 多日数据分析的日期输入框 -->
+            <div id="vis-multi_day_input" style="display: none;">
+                <label for="start_date">开始日期：</label>
+                <input type="date" id="start_date" name="start_date">
+                <label for="end_date">结束日期：</label>
+                <input type="date" id="end_date" name="end_date">
+            </div>
+
+            <input type="submit" value="开始分析">
+        </div>
+    </form>
+</div>
+
+<!-- 可视化显示模块 -->
+
+<div class="vis-analysis_div_button">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js"></script>
+    <button class="vis-analysis-clost-button" onclick="closeFileList()" style="display:none;">关闭</button>
+    <div class="vis-analysis-table-container">
+
+        {% if pyecharts_bar_chart_html and pyecharts_bar_chart_pinlei_html %}
+
+        <h3 class="vis-analysis_div_h3" >{{ analysis_route_single }}数据可视化大屏</h3>
+
+        <div class="analysis-pytcharts-jy" id="pyecharts_bar_chart_html" style="width: 900px; height: 400px;"></div>
+        <div class="analysis-pytcharts-pl" id="pyecharts_bar_chart_pinlei_html" style="width: 900px; height: 400px;"></div>
+        <!-- 经营数据附图 -->
+        <div class="analysis-pytcharts-jy_pie1" id="pyecharts_bar_chart_pie_html" style="width: 450px; height: 160px;"></div>
+        <div class="analysis-pytcharts-jy_pie2" id="pyecharts_bar_chart_pie_conversion_html" style="width: 450px; height: 160px;"></div>
+        <div class="analysis-pytcharts-jy-pie3" id="pyecharts_pie_unti" style="width: 450px; height: 160px;"></div>
+        <div class="analysis-pytcharts-jy-pie4" id="pyecharts_pie_percentage" style="width: 450px; height: 160px;"></div>
+
+        <!-- 品类销售附图 -->
+        <div class="analysis-pytcharts-pl-pie1" id="pyecharts_pie_pinlei_one" style="width: 450px; height: 160px;"></div>
+        <div class="analysis-pytcharts-pl-pie2" id="pyecharts_pie_pinlei_tow" style="width: 450px; height: 160px;"></div>
+        <div class="analysis-pytcharts-pl-pie3" id="pyecharts_pie_pinlei_three" style="width: 450px; height: 160px;"></div>
+        <div class="analysis-pytcharts-pl-pie4" id="pyecharts_pie_pinlei_four" style="width: 450px; height: 160px;"></div>
+
+        <script>
+            // 获取后端传递的数据
+                //单日经营数据
+            var bar_analysis_pytcharts_jy = {{ pyecharts_bar_chart_html | safe }}
+            var pie_bar_chart_js = {{ pyecharts_bar_chart_pie_html | safe }}
+            var pie_conversion_js = {{ pyecharts_pie_conversion | safe }}
+            var pie_unti_js = {{ pyecharts_pie_unti |safe }}
+            var pie_percentage_js = {{ html_table_display_percentage | safe }}
+
+                //单日销售品类
+            var bar_pyecharts_bar_chart_pinlei = {{ pyecharts_bar_chart_pinlei_html | safe }}
+            var pie_pyecharts_bar_chart_pinlei_one = {{ pyecharts_one_pinlei_pie | safe }}
+            var pie_pyecharts_bao_chart_pinlei_tow = {{ pyecharts_tow_pinlei_pie | safe }}
+            var pie_pyecharts_bar_chart_pinlei_three = {{ pyecharts_three_pinlei_pie | safe }}
+            var pie_pyecharts_bar_chart_pinlei_four = {{ pyecharts_four_pinlei_pie | safe }}
+
+            // 渲染图表
+                //pyecharts_bar_chart_html
+
+            var bar_pyecharts_one = echarts.init(document.getElementById('pyecharts_bar_chart_html'));
+            bar_pyecharts_one.setOption(bar_analysis_pytcharts_jy)
+
+
+                // pyecharts_bar_chart_pie
+            var pie_chart_js = echarts.init(document.getElementById('pyecharts_bar_chart_pie_html'));
+             pie_chart_js.setOption(pie_bar_chart_js)
+
+
+                //pyecharts_bar_chart_pie_conversion_html
+             var pie_chart_conversion_js = echarts.init(document.getElementById('pyecharts_bar_chart_pie_conversion_html'));
+             pie_chart_conversion_js.setOption(pie_conversion_js)
+
+
+                //pyecharts_pie_unti
+            var pie_chart_unti_js = echarts.init(document.getElementById('pyecharts_pie_unti'));
+            pie_chart_unti_js.setOption(pie_unti_js)
+
+                //pyecharts_pie_percentage
+            var pie_chart_percentage_js = echarts.init(document.getElementById('pyecharts_pie_percentage'));
+            pie_chart_percentage_js.setOption(pie_percentage_js)
+
+
+             //品类渲染图表
+                //pyecharts_bar_chart_pinlei_html
+            var bar_pyecharts_tow = echarts.init(document.getElementById('pyecharts_bar_chart_pinlei_html'));
+            bar_pyecharts_tow.setOption(bar_pyecharts_bar_chart_pinlei)
+
+                //pyecharts_pie_pinlei_one
+            var pie_pinlei_one = echarts.init(document.getElementById('pyecharts_pie_pinlei_one'));
+            pie_pinlei_one.setOption(pie_pyecharts_bar_chart_pinlei_one)
+
+                //pyecharts_pie_pinlei_tow
+            var pie_pinlei_tow = echarts.init(document.getElementById('pyecharts_pie_pinlei_tow'));
+            pie_pinlei_tow.setOption(pie_pyecharts_bao_chart_pinlei_tow)
+
+                //pyecharts_pie_pinlei_three
+            var pie_pinlei_therr = echarts.init(document.getElementById('pyecharts_pie_pinlei_three'));
+            pie_pinlei_therr.setOption(pie_pyecharts_bar_chart_pinlei_three)
+
+                //pyecharts_pie_pinlei_four
+            var pie_pinlei_four = echarts.init(document.getElementById('pyecharts_pie_pinlei_four'));
+            pie_pinlei_four.setOption(pie_pyecharts_bar_chart_pinlei_four)
+
+        </script>
+
+        {% elif pyecharts_days_bar_business %}
+        <h3 class="vis-analysis_div_h3">{{ analysis_route_multi_start }}~{{ analysis_route_multi_end }}数据可视化</h3>
+
+        <div class="analysis-pytcharts-business" id="pyecharts_days_bar_business_html" style="width: 900px; height: 400px;"></div>
+        <div class="analysis-pytcharts-business_pie_one" id="pyecharts_dats_pie_business_html_one" style="width: 450px; height: 200px;"></div>
+        <div class="analysis-pytcharts-business_pie_tow" id="pyecharts_dats_pie_business_html_tow" style="width: 450px; height: 200px;"></div>
+        <div class="analysis-pytcharts-business_pie_three" id="pyecharts_dats_pie_business_html_three" style="width: 450px; height: 200px;"></div>
+        <div class="analysis-pytcharts-business_pie_four" id="pyecharts_dats_pie_business_html_four" style="width: 450px; height: 200px;"></div>
+         <!-- 品类销售可视化 -->
+        <div class="analysis-pytcharts-category" id="pyecharts_bar_days_category_html" style="width: 900px; height: 400px;"></div>
+        <!-- 品类销售饼图可视化 -->
+        <div class="analysis-pytcharts-category-one" id="pyecharts_pie_days_category_html_one" style="width: 450px; height: 260px;"></div>
+        <div class="analysis-pytcharts-category-tow" id="pyecharts_pie_days_category_html_tow" style="width: 450px; height: 260px;"></div>
+        <div class="analysis-pytcharts-category-three" id="pyecharts_pie_days_category_html_three" style="width: 450px; height: 260px;"></div>
+        <div class="analysis-pytcharts-category-four" id="pyecharts_pie_days_category_html_four" style="width: 450px; height: 260px;"></div>
+
+        <script>
+
+             //获取后端数据
+             var bar_days_pytcharts_business = {{ pyecharts_days_bar_business | safe }}
+
+             var pie_days_pyecharts_business_one = {{ pyecharts_days_pie_business_one | safe }}
+             var pie_days_pyecharts_business_tow = {{ pyecharts_days_pie_business_tow | safe }}
+             var pie_days_pyecharts_business_three = {{ pyecharts_days_pie_business_three | safe }}
+             var pie_days_pyecharts_business_four = {{ pyecharts_days_pie_business_four | safe }}
+
+             var bar_days_pyecharts_category = {{ pyecharts_days_bar_category | safe }}
+             var pie_days_pyecharts_categouy_one = {{ pyecharts_days_pie_category_one | safe }}
+             var pie_days_pyecharts_categouy_tow = {{ pyecharts_days_pie_category_tow | safe }}
+             var pie_days_pyecharts_categouy_three = {{ pyecharts_days_pie_category_three |safe }}
+             var pie_days_pyecharts_categouy_four = {{ pyecharts_days_pie_category_four | safe }}
+
+
+
+             //渲染图表《pyecharts_days_bar_chart_html》
+
+            var days_bar_pyecharts_business = echarts.init(document.getElementById('pyecharts_days_bar_business_html'));
+            days_bar_pyecharts_business.setOption(bar_days_pytcharts_business)
+
+            //渲染图表《pyecharts_dats_pie_business_html_one》
+            var days_pie_pyecharts_business_one = echarts.init(document.getElementById('pyecharts_dats_pie_business_html_one'));
+            days_pie_pyecharts_business_one.setOption(pie_days_pyecharts_business_one)
+
+            //渲染图表 《pyecharts_dats_pie_business_html_tow》
+            var days_pie_pyecharts_business_tow = echarts.init(document.getElementById('pyecharts_dats_pie_business_html_tow'));
+            days_pie_pyecharts_business_tow.setOption(pie_days_pyecharts_business_tow)
+
+            //渲染图表 pyecharts_dats_pie_business_html_three
+             var days_pie_pyecharts_business_three = echarts.init(document.getElementById('pyecharts_dats_pie_business_html_three'));
+            days_pie_pyecharts_business_three.setOption(pie_days_pyecharts_business_three)
+
+            //渲染图表《pyecharts_dats_pie_business_html_four》
+             var days_pie_pyecharts_business_four = echarts.init(document.getElementById('pyecharts_dats_pie_business_html_four'));
+            days_pie_pyecharts_business_four.setOption(pie_days_pyecharts_business_four)
+
+            //渲染图表《pyecharts_bar_days_category_html》
+            var days_bar_pyecharts_category = echarts.init(document.getElementById('pyecharts_bar_days_category_html'));
+            days_bar_pyecharts_category.setOption(bar_days_pyecharts_category)
+
+            //渲染图标 《pyecharts_pie_days_category_html_one》
+            var days_pie_pyecharts_category_one = echarts.init(document.getElementById('pyecharts_pie_days_category_html_one'));
+            days_pie_pyecharts_category_one.setOption(pie_days_pyecharts_categouy_one)
+
+            //渲染图表 《pyecharts_pie_days_category_html_tow》
+            var days_pie_pyecharts_category_tow = echarts.init(document.getElementById('pyecharts_pie_days_category_html_tow'));
+            days_pie_pyecharts_category_tow.setOption(pie_days_pyecharts_categouy_tow)
+
+            //渲染图表 《pyecharts_pie_days_category_html_three》
+            var days_pie_pyecharts_category_three = echarts.init(document.getElementById('pyecharts_pie_days_category_html_three'));
+            days_pie_pyecharts_category_three.setOption(pie_days_pyecharts_categouy_three)
+
+            // 渲染图表 《pyecharts_pie_days_category_html_four》
+            var days_pie_pyecharts_category_four = echarts.init(document.getElementById('pyecharts_pie_days_category_html_four'));
+            days_pie_pyecharts_category_four.setOption(pie_days_pyecharts_categouy_four)
+
+
+
+        </script>
+
+        {% endif %}
+    </div>
+
+</div>
+
+<script>
+    // 获取元素
+    var analysisTypeDropdown = document.getElementById("vis-analysis_type");// 可视化类型元素
+    var singleDayInput = document.getElementById("vis-single_day_input");// 单日可视化div容器
+    var multiDayInput = document.getElementById("vis-multi_day_input");// 多日可视化div容器
+    var tableContainer = document.querySelector('.vis-analysis-table-container');// 可视化图表显示div容器
+    var closeButton = document.querySelector('.vis-analysis-clost-button'); // 关闭容器元素
+    var h3Element = document.querySelector('.vis-analysis_div_h3'); // h3标题元素
+    var fileList = document.querySelector('.vis-analysis_div_button');// 整体图表显示容器div页面
+
+    // 添加事件监听器显示或隐藏日期输入框
+    analysisTypeDropdown.addEventListener("change", function () {
+        console.log("Change event triggered");
+        var selectedValue = analysisTypeDropdown.value;
+        console.log("Selected value:", selectedValue);
+        singleDayInput.style.display = selectedValue === "single_day" ? "block" : "none";
+        multiDayInput.style.display = selectedValue === "multi_day" ? "block" : "none";
+    });
+
+    // 显示相关元素
+    function showTable() {
+        tableContainer.style.display = 'block';
+        closeButton.style.display = 'block';
+
+        var selectedValue = analysisTypeDropdown.value;
+        h3Element.style.display = (selectedValue === "single_day" || selectedValue === "multi_day") ? 'block' : 'none';
+    }
+
+    // 调用showTable函数相关元素
+    showTable();
+
+    // 关闭文件列表
+    function closeFileList() {
+        fileList.style.display = 'none';
+        // 可选择性地清空文件列表内容
+        fileList.innerHTML = '';
+    }
+
+    // 在按钮下方添加事件监听器
+    closeButton.addEventListener("click", closeFileList);
+</script>
+
+
+{% endblock %}
+
+

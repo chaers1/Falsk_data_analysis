@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/logins.css" type="text/css">
+</head>
+
+<body class="dody_login_id">
+
+    <header>
+        <h1>电商经营数据可视化管理系统</h1>
+    </header>
+
+         <div class="text">
+            <span class="quote">山峰为伴，重新出发，致敬奔腾不息的力量</span>
+            <span class="author">——题记</span>
+        </div>
+
+    <div class="container">
+
+        <h1 class="login_hid">
+            登录
+        </h1>
+
+        <form action="{{url_for('login')}}" method="POST" class="lagin_form_id">
+            <label for="username"></label>
+            <input type="text" id="username" name="username" placeholder="请输入用户名" required>
+            <label for="password"></label>
+            <input type="password" id="password" name="password" placeholder="请输入密码" required>
+            <button type="submit">登录</button>
+        </form>
+
+        <p>注册工作人员
+            <a href="{{url_for('register')}}">注册</a>
+        </p>
+    </div>
+
+</body>
+</html>

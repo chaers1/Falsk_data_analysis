@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/logins.css" type="text/css">
+</head>
+
+
+<body>
+    <div class="container">
+          <h1>用户注册</h1>
+              <form action="{{url_for('register')}}" method="POST">
+                    <label for="zusername">用户名</label>
+                    <input type="text" id="zusername" name="zusername" placeholder="请输入用户名" required>
+                    <br>
+
+                    <label for="zpassword">密码</label>
+                    <input type="password" id="zpassword" name="zpassword" placeholder="请输入密码" required>
+                    <button type="submit">注册</button>
+              </form>
+    </div>
+</body>
+</html>

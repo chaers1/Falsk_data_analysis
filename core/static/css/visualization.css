@@ -1,0 +1,169 @@
+/* 头部*/
+
+.vis-analysis-div-button{
+    position: relative;
+}
+
+/* 关闭按键 */
+
+.vis-analysis-clost-button{
+    position: absolute;
+    top: 267px; /* 调整按钮距离顶部的位置 */
+    right: 10px; /* 调整按钮距离右侧的位置 */
+}
+
+/* 图表显示容器 */
+
+vis-analysis-table-container{
+    position: absolute;
+    top: 267px;
+    left: 1px;
+    z-index: 1;
+}
+/* h3标题 */
+
+.vis-analysis_div_h3{
+    position: absolute; /* 调整上边距，使其在表格下方 */
+    top: 267px;
+    right: 47%;
+}
+
+
+/*品类可视化显示*/
+.analysis-pytcharts-pl {
+    background-color: white; /* 设置背景颜色为白色 */
+    position: relative; /* 使用相对定位 */
+    top: -20px; /* 顶部间距 */
+    left: 0px; /* 左边间距 */
+}
+
+
+.analysis-pytcharts-jy {
+    background-color: white; /* 设置背景颜色为白色 */
+    position: relative; /* 使用相对定位 */
+    top: -17px; /* 顶部间距 */
+    left: 0px; /* 左边间距 */
+        }
+
+/* 单日经营数据饼形图1*/
+.analysis-pytcharts-jy_pie1{
+    background-color: white; /* 设置背景颜色为白色 */
+    position: relative; /* 使用相对定位 */
+    top: -819px; /* 顶部间距 */
+    left: 917px; /* 左边间距 */
+}
+
+.analysis-pytcharts-jy_pie2{
+    background-color: white; /* 设置背景颜色为白色 */
+    position: relative; /* 使用相对定位 */
+    top: -981px; /* 顶部间距 */
+    left: 1412px; /* 左边间距 */
+}
+.analysis-pytcharts-jy-pie3{
+    background-color: white; /* 设置背景颜色为白色 */
+    position: relative; /* 使用相对定位 */
+    top: -974px; /* 顶部间距 */
+    left: 917px; /* 左边间距 */
+}
+.analysis-pytcharts-jy-pie4{
+    background-color: white; /* 设置背景颜色为白色 */
+    position: relative; /* 使用相对定位 */
+    top: -1134px; /* 顶部间距 */
+    left: 1412px; /* 左边间距 */
+}
+.analysis-pytcharts-pl-pie1{
+    background-color: white; /* 设置背景颜色为白色 */
+    position: relative; /* 使用相对定位 */
+    top: -1062px; /* 顶部间距 */
+    left: 903px; /* 左边间距 */
+}
+.analysis-pytcharts-pl-pie2{
+    background-color: white; /* 设置背景颜色为白色 */
+    position: relative; /* 使用相对定位 */
+    top: -1020px; /* 顶部间距 */
+    left: 903px; /* 左边间距 */
+}
+
+.analysis-pytcharts-pl-pie3{
+    background-color: white; /* 设置背景颜色为白色 */
+    position: relative; /* 使用相对定位 */
+    top: -1392px; /* 顶部间距 */
+    left: 1413px; /* 左边间距 */
+}
+
+.analysis-pytcharts-pl-pie4{
+    background-color: white; /* 设置背景颜色为白色 */
+    position: relative; /* 使用相对定位 */
+    top: -1339px; /* 顶部间距 */
+    left: 1413px; /* 左边间距 */
+}
+
+.analysis-pytcharts-business{
+    background-color: white; /* 设置背景颜色为白色 */
+    position: relative; /* 使用相对定位 */
+    top: -17px; /* 顶部间距 */
+    left: 0px; /* 左边间距 */
+}
+
+.analysis-pytcharts-business_pie_one{
+    background-color: white; /* 设置背景颜色为白色 */
+    position: relative; /* 使用相对定位 */
+    top: -417px; /* 顶部间距 */
+    left: 917px; /* 左边间距 */
+}
+
+.analysis-pytcharts-business_pie_tow{
+    background-color: white; /* 设置背景颜色为白色 */
+    position: relative; /* 使用相对定位 */
+    top: -616px; /* 顶部间距 */
+    left: 1412px; /* 左边间距 */
+}
+
+.analysis-pytcharts-business_pie_three{
+    background-color: white; /* 设置背景颜色为白色 */
+    position: relative; /* 使用相对定位 */
+    top: -614px; /* 顶部间距 */
+    left: 917px; /* 左边间距 */
+}
+
+.analysis-pytcharts-business_pie_four{
+    background-color: white; /* 设置背景颜色为白色 */
+    position: relative; /* 使用相对定位 */
+    top: -811px; /* 顶部间距 */
+    left: 1412px; /* 左边间距 */
+}
+
+.analysis-pytcharts-category{
+    background-color: white; /* 设置背景颜色为白色 */
+    position: relative; /* 使用相对定位 */
+    top: -728px; /* 顶部间距 */
+    left: 0px; /* 左边间距 */
+}
+
+.analysis-pytcharts-category-one{
+    background-color: white; /* 设置背景颜色为白色 */
+    position: relative; /* 使用相对定位 */
+    top: -1164px; /* 顶部间距 */
+    left: 903px; /* 左边间距 */
+}
+
+.analysis-pytcharts-category-tow{
+    background-color: white; /* 设置背景颜色为白色 */
+    position: relative; /* 使用相对定位 */
+    top: -1428px; /* 顶部间距 */
+    left: 1411px; /* 左边间距 */
+}
+
+.analysis-pytcharts-category-three{
+    background-color: white; /* 设置背景颜色为白色 */
+    position: relative; /* 使用相对定位 */
+    top: -1417px; /* 顶部间距 */
+    left: 901px; /* 左边间距 */
+}
+
+.analysis-pytcharts-category-four{
+    background-color: white; /* 设置背景颜色为白色 */
+    position: relative; /* 使用相对定位 */
+    top: -1682px; /* 顶部间距 */
+    left: 1413px; /* 左边间距 */
+}
